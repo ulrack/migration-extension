@@ -1,0 +1,25 @@
+{
+    "parent": "migration",
+    "command": "migrate",
+    "description": "Migrates to a set version of the migrations.",
+    "service": "services.command.migration.migrate",
+    "flags": [
+        {
+            "long": "latest",
+            "short": "l",
+            "description": "Upgrades all migration pools to the latest versions."
+        }
+    ],
+    "parameters": [
+        {
+            "long": "pool",
+            "description": "The name of the pool to upgrade.",
+            "type": "array"
+        },
+        {
+            "long": "version",
+            "description": "The version of the pool to upgrade.",
+            "type": "array"
+        }
+    ]
+}

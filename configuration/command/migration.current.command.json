@@ -1,0 +1,6 @@
+{
+    "parent": "migration",
+    "command": "current",
+    "description": "Displays the current installed versions for the migrations.",
+    "service": "services.command.migration.current"
+}

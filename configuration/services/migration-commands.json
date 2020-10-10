@@ -1,0 +1,25 @@
+{
+    "command.migration.matrix": {
+        "class": "\\Ulrack\\MigrationExtension\\Command\\Migration\\MatrixCommand",
+        "parameters": {
+            "matrix": "@{invocations.migration.matrix}"
+        }
+    },
+    "command.migration.current": {
+        "class": "\\Ulrack\\MigrationExtension\\Command\\Migration\\CurrentCommand",
+        "parameters": {
+            "groupedMigrations": "@{invocations.migration.grouped.migrations}",
+            "versionStorage": "@{persistent.migration}"
+        }
+    },
+    "command.migration.migrate": {
+        "class": "\\Ulrack\\MigrationExtension\\Command\\Migration\\MigrateCommand",
+        "parameters": {
+            "groups": "@{invocations.migration.grouped.migrations}",
+            "matrix": "@{invocations.migration.matrix}",
+            "versionStorage": "@{persistent.migration}",
+            "serviceFactory": "@{invocations.migration.service.factory}",
+            "pathFinder": "@{services.migration.path.finder}"
+        }
+    }
+}

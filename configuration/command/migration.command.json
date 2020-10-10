@@ -1,0 +1,4 @@
+{
+    "command": "migration",
+    "description": "Migration related commands."
+}

@@ -1,0 +1,6 @@
+{
+    "parent": "migration",
+    "command": "matrix",
+    "description": "Displays the version matrix for migrations.",
+    "service": "services.command.migration.matrix"
+}

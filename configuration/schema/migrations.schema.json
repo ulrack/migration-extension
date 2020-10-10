@@ -1,0 +1,36 @@
+{
+    "$schema": "https://json-schema.org/draft-07/schema",
+    "$id": "migrations.schema.json",
+    "type": "object",
+    "properties": {
+        "service": {
+            "type": "string"
+        },
+        "version": {
+            "type": "string"
+        },
+        "description": {
+            "type": "string"
+        },
+        "pool": {
+            "type": "string",
+            "default": "main"
+        },
+        "dependant": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "pool": {
+                        "type": "string"
+                    },
+                    "version": {
+                        "type": "string"
+                    }
+                },
+                "required": ["pool", "version"]
+            }
+        }
+    },
+    "required": ["service", "version", "pool"]
+}

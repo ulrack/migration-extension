@@ -1,0 +1,17 @@
+{
+    "version.matrix.generator": {
+        "class": "\\Ulrack\\MigrationExtension\\Component\\Generator\\VersionMatrixGenerator"
+    },
+    "version.range.selector": {
+        "class": "\\Ulrack\\MigrationExtension\\Component\\Version\\RangeSelector"
+    },
+    "migration.grouper": {
+        "class": "\\Ulrack\\MigrationExtension\\Component\\Migration\\Grouper"
+    },
+    "migration.path.finder": {
+        "class": "\\Ulrack\\MigrationExtension\\Component\\Migration\\PathFinder",
+        "parameters": {
+            "rangeSelector": "@{services.version.range.selector}"
+        }
+    }
+}
