@@ -113,7 +113,7 @@ class MigrationMain100 implements MigrationInterface
      */
     public function revert(): void
     {
-        $this->connectionQuery(new DropDatabaseQuery('my-database'));
+        $this->connection->query(new DropDatabaseQuery('my-database'));
     }
 }
 
