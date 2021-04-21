@@ -9,10 +9,10 @@ namespace Ulrack\MigrationExtension\Command\Migration;
 
 use Throwable;
 use GrizzIt\Storage\Common\StorageInterface;
-use Ulrack\Command\Common\Command\InputInterface;
-use Ulrack\Command\Common\Command\OutputInterface;
-use Ulrack\Command\Common\Command\CommandInterface;
-use Ulrack\Services\Common\ServiceFactoryInterface;
+use GrizzIt\Command\Common\Command\InputInterface;
+use GrizzIt\Command\Common\Command\OutputInterface;
+use GrizzIt\Command\Common\Command\CommandInterface;
+use GrizzIt\Services\Common\Factory\ServiceFactoryInterface;
 use Ulrack\MigrationExtension\Common\Migration\PathFinderInterface;
 use Ulrack\MigrationExtension\Exception\Migration\MigrationFailedException;
 use Ulrack\MigrationExtension\Exception\Migration\MisconfiguredParameterException;
@@ -24,35 +24,35 @@ class MigrateCommand implements CommandInterface
      *
      * @var array
      */
-    private $matrix;
+    private array $matrix;
 
     /**
      * Contains the version storage.
      *
      * @var StorageInterface
      */
-    private $versionStorage;
+    private StorageInterface $versionStorage;
 
     /**
      * Contains the grouped version of migration pools.
      *
      * @var array
      */
-    private $groups;
+    private array $groups;
 
     /**
      * Contains the service factory to construct the migrations.
      *
      * @var ServiceFactoryInterface
      */
-    private $serviceFactory;
+    private ServiceFactoryInterface $serviceFactory;
 
     /**
      * Contains the path finder for determining the migration path.
      *
      * @var PathFinderInterface
      */
-    private $pathFinder;
+    private PathFinderInterface $pathFinder;
 
     /**
      * Constructor.

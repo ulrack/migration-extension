@@ -19,28 +19,28 @@ class PathFinder implements PathFinderInterface
      *
      * @var array
      */
-    private $versionInstalled;
+    private array $versionInstalled = [];
 
     /**
      * Contains the grouped migrations.
      *
      * @var array
      */
-    private $groups;
+    private array $groups = [];
 
     /**
      * Contains the range selector.
      *
      * @var RangeSelectorInterface
      */
-    private $rangeSelector;
+    private RangeSelectorInterface $rangeSelector;
 
     /**
      * Contains the restoration configuration of the last generated path.
      *
      * @var array
      */
-    private $restoreConfig = [];
+    private array $restoreConfig = [];
 
     /**
      * Constructor.

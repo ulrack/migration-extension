@@ -17,7 +17,7 @@ class MisconfiguredParameterException extends Exception
      * @param mixed $pool
      * @param mixed $version
      */
-    public function __construct($pool, $version)
+    public function __construct(mixed $pool, mixed $version)
     {
         parent::__construct(
             sprintf(

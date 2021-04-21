@@ -1,17 +1,72 @@
 {
-    "version.matrix.generator": {
-        "class": "\\Ulrack\\MigrationExtension\\Component\\Generator\\VersionMatrixGenerator"
+    "services": {
+        "version.matrix.generator": {
+            "class": "\\Ulrack\\MigrationExtension\\Component\\Generator\\VersionMatrixGenerator"
+        },
+        "version.range.selector": {
+            "class": "\\Ulrack\\MigrationExtension\\Component\\Version\\RangeSelector"
+        },
+        "migration.grouper": {
+            "class": "\\Ulrack\\MigrationExtension\\Component\\Migration\\Grouper"
+        },
+        "migration.path.finder": {
+            "class": "\\Ulrack\\MigrationExtension\\Component\\Migration\\PathFinder",
+            "parameters": {
+                "rangeSelector": "@{services.version.range.selector}"
+            }
+        },
+        "command.migration.matrix": {
+            "class": "\\Ulrack\\MigrationExtension\\Command\\Migration\\MatrixCommand",
+            "parameters": {
+                "matrix": "@{invocations.migration.matrix}"
+            }
+        },
+        "command.migration.current": {
+            "class": "\\Ulrack\\MigrationExtension\\Command\\Migration\\CurrentCommand",
+            "parameters": {
+                "groupedMigrations": "@{invocations.migration.grouped.migrations}",
+                "versionStorage": "@{persistent.migration}"
+            }
+        },
+        "command.migration.migrate": {
+            "class": "\\Ulrack\\MigrationExtension\\Command\\Migration\\MigrateCommand",
+            "parameters": {
+                "groups": "@{invocations.migration.grouped.migrations}",
+                "matrix": "@{invocations.migration.matrix}",
+                "versionStorage": "@{persistent.migration}",
+                "serviceFactory": "@{internal.core.service.factory}",
+                "pathFinder": "@{services.migration.path.finder}"
+            }
+        }
     },
-    "version.range.selector": {
-        "class": "\\Ulrack\\MigrationExtension\\Component\\Version\\RangeSelector"
+    "persistent": {
+        "migration": {}
     },
-    "migration.grouper": {
-        "class": "\\Ulrack\\MigrationExtension\\Component\\Migration\\Grouper"
-    },
-    "migration.path.finder": {
-        "class": "\\Ulrack\\MigrationExtension\\Component\\Migration\\PathFinder",
-        "parameters": {
-            "rangeSelector": "@{services.version.range.selector}"
+    "invocations": {
+        "get.config.registry": {
+            "service": "internal.core.configuration.manager",
+            "method": "getConfigRegistry"
+        },
+        "migration.config.migrations": {
+            "service": "invocations.get.config.registry",
+            "method": "get",
+            "parameters": {
+                "key": "migrations"
+            }
+        },
+        "migration.grouped.migrations": {
+            "service": "services.migration.grouper",
+            "method": "__invoke",
+            "parameters": {
+                "migrations": "@{invocations.migration.config.migrations}"
+            }
+        },
+        "migration.matrix": {
+            "service": "services.version.matrix.generator",
+            "method": "__invoke",
+            "parameters": {
+                "groupedMigrations": "@{invocations.migration.grouped.migrations}"
+            }
         }
     }
 }

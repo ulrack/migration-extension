@@ -4,8 +4,8 @@ namespace Ulrack\MigrationExtension\Tests\Command\Migration;
 
 use PHPUnit\Framework\TestCase;
 use GrizzIt\Storage\Component\ObjectStorage;
-use Ulrack\Command\Common\Command\InputInterface;
-use Ulrack\Command\Common\Command\OutputInterface;
+use GrizzIt\Command\Common\Command\InputInterface;
+use GrizzIt\Command\Common\Command\OutputInterface;
 use Ulrack\MigrationExtension\Command\Migration\CurrentCommand;
 
 /**

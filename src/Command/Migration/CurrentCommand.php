@@ -8,9 +8,9 @@
 namespace Ulrack\MigrationExtension\Command\Migration;
 
 use GrizzIt\Storage\Common\StorageInterface;
-use Ulrack\Command\Common\Command\InputInterface;
-use Ulrack\Command\Common\Command\OutputInterface;
-use Ulrack\Command\Common\Command\CommandInterface;
+use GrizzIt\Command\Common\Command\InputInterface;
+use GrizzIt\Command\Common\Command\OutputInterface;
+use GrizzIt\Command\Common\Command\CommandInterface;
 
 class CurrentCommand implements CommandInterface
 {
@@ -19,14 +19,14 @@ class CurrentCommand implements CommandInterface
      *
      * @var array
      */
-    private $groupedMigrations;
+    private array $groupedMigrations;
 
     /**
      * Contains the version storage.
      *
      * @var StorageInterface
      */
-    private $versionStorage;
+    private StorageInterface $versionStorage;
 
     /**
      * Constructor.

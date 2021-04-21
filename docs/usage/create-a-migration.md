@@ -52,10 +52,12 @@ service file could look like the following:
 
 ```json
 {
-    "migrations.main.1.0.0": {
-        "class": "\\MyVendor\\MyProject\\MigrationMain100",
-        "parameters": {
-            "connection": "@{database-connections.main}"
+    "services": {
+        "migrations.main.1.0.0": {
+            "class": "\\MyVendor\\MyProject\\MigrationMain100",
+            "parameters": {
+                "connection": "@{database-connections.main}"
+            }
         }
     }
 }
@@ -72,10 +74,10 @@ So the class for this migration will look like this:
 
 namespace MyVendor\MyProject;
 
-use Ulrack\Dbal\Common\ConnectionInterface;
+use GrizzIt\Dbal\Common\ConnectionInterface;
 use Ulrack\MigrationExtension\Common\MigrationInterface;
-use Ulrack\Dbal\Sql\Component\Query\Database\DropDatabaseQuery;
-use Ulrack\Dbal\Sql\Component\Query\Database\CreateDatabaseQuery;
+use GrizzIt\Dbal\Sql\Component\Query\Database\DropDatabaseQuery;
+use GrizzIt\Dbal\Sql\Component\Query\Database\CreateDatabaseQuery;
 
 class MigrationMain100 implements MigrationInterface
 {
